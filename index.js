@@ -54,5 +54,5 @@ io.on('connection', (socket) => {
         console.log('user had left');
     });
 });
-
+app.use(cors());
 server.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
