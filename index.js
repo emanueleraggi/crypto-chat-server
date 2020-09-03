@@ -15,6 +15,12 @@ const io = socketio(server);
 app.use(router);
 app.use(cors());
 
+app.options('*', cors());
+app.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin', '*');
+	next();
+});
+
 io.on('connection', (socket) => {
     socket.on('join', ({ name, room }, callback) => {
         const { error, user } = addUser({ id: socket.id, name, room });
